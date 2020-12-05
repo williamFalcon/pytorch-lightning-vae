@@ -12,13 +12,6 @@ class ImageSampler(pl.Callback):
         self.img_size = None
         self.num_preds = 16
 
-    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx, dataloader_idx):
-        # track the image size
-        if batch_idx == 0:
-            x, _ = batch
-            self.img_size = x.size()
-            self.img_size[0] = self.num_preds
-
     def on_train_epoch_end(self, trainer, pl_module, outputs):
         figure(figsize=(8, 3), dpi=300)
 
@@ -38,4 +31,3 @@ class ImageSampler(pl.Callback):
 
         # PLOT IMAGES
         trainer.logger.experiment.add_image('img',torch.tensor(img).permute(2, 0, 1), global_step=trainer.global_step)
-

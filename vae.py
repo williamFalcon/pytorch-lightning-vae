@@ -112,7 +112,7 @@ def train():
     sampler = ImageSampler()
 
     vae = VAE()
-    trainer = pl.Trainer(max_epochs=30, progress_bar_refresh_rate=10, callbacks=[sampler])
+    trainer = pl.Trainer(gpus=args.gpus, max_epochs=20, callbacks=[sampler])
     trainer.fit(vae, dataset)
 
 

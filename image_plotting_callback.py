@@ -17,7 +17,7 @@ class ImageSampler(pl.Callback):
 
         # Z COMES FROM NORMAL(0, 1)
         rand_v = torch.rand((self.num_preds, pl_module.hparams.latent_dim), device=pl_module.device)
-        p = torch.distributions.Normal(torch.zeros_like(rand_v), torch.zeros_like(rand_v))
+        p = torch.distributions.Normal(torch.zeros_like(rand_v), torch.ones_like(rand_v))
         z = p.rsample()
 
         # SAMPLE IMAGES

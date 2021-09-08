@@ -1,2 +1,2 @@
 pytorch-lightning==1.0.8
-pytorch-lightning-bolts==0.2.5rc1
+pytorch-lightning-bolts==0.2.5
